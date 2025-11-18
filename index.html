@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>檀健次粉丝应援站 | 小炭火</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 基础样式 */
         * {
@@ -13,8 +14,16 @@
             font-family: 'Microsoft YaHei', sans-serif;
         }
         
+        :root {
+            --primary-red: #ff4500;
+            --primary-orange: #ff8c00;
+            --primary-yellow: #ffd700;
+            --dark-red: #cc3700;
+            --light-yellow: #fff9c4;
+        }
+        
         body {
-            background: linear-gradient(135deg, #ff4500, #ff8c00, #ffd700);
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-orange), var(--primary-yellow));
             color: #fff;
             line-height: 1.6;
             min-height: 100vh;
@@ -50,7 +59,7 @@
         .flame-1 {
             width: 100px;
             height: 150px;
-            background: radial-gradient(circle, #ff4500, #ff8c00, transparent 70%);
+            background: radial-gradient(circle, var(--primary-red), var(--primary-orange), transparent 70%);
             left: 20%;
             animation-delay: 0s;
         }
@@ -58,7 +67,7 @@
         .flame-2 {
             width: 80px;
             height: 120px;
-            background: radial-gradient(circle, #ff8c00, #ffd700, transparent 70%);
+            background: radial-gradient(circle, var(--primary-orange), var(--primary-yellow), transparent 70%);
             left: 50%;
             animation-delay: 1s;
         }
@@ -66,7 +75,7 @@
         .flame-3 {
             width: 90px;
             height: 130px;
-            background: radial-gradient(circle, #ff4500, #ff8c00, transparent 70%);
+            background: radial-gradient(circle, var(--primary-red), var(--primary-orange), transparent 70%);
             right: 20%;
             animation-delay: 2s;
         }
@@ -99,7 +108,7 @@
         .hedgehog {
             width: 80px;
             height: 50px;
-            background: #ff8c00;
+            background: var(--primary-orange);
             border-radius: 50%;
             position: relative;
             margin: 0 20px;
@@ -110,7 +119,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, #ffd700, #ff8c00);
+            background: radial-gradient(circle at 30% 30%, var(--primary-yellow), var(--primary-orange));
             border-radius: 50%;
             z-index: 1;
         }
@@ -120,7 +129,7 @@
             position: absolute;
             width: 120%;
             height: 30px;
-            background: linear-gradient(90deg, transparent 0%, #ff4500 20%, #ff8c00 50%, #ff4500 80%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, var(--primary-red) 20%, var(--primary-orange) 50%, var(--primary-red) 80%, transparent 100%);
             top: -15px;
             left: -10%;
             border-radius: 50%;
@@ -140,7 +149,7 @@
             position: absolute;
             width: 8px;
             height: 25px;
-            background: linear-gradient(to top, #ff4500, #ff8c00);
+            background: linear-gradient(to top, var(--primary-red), var(--primary-orange));
             border-radius: 50% 50% 0 0;
             transform-origin: bottom center;
         }
@@ -149,7 +158,7 @@
             font-size: 3rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             margin-bottom: 10px;
-            background: linear-gradient(to right, #ff4500, #ffd700);
+            background: linear-gradient(to right, var(--primary-red), var(--primary-yellow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -220,36 +229,121 @@
         }
         
         .card h2 {
-            color: #ffd700;
+            color: var(--primary-yellow);
             margin-bottom: 15px;
             border-bottom: 2px solid rgba(255, 215, 0, 0.5);
             padding-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
         
-        .gallery {
+        .card h2 i {
+            margin-right: 10px;
+        }
+        
+        /* 作品集样式 */
+        .works-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-yellow);
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+        
+        .tab-btn:hover {
+            color: var(--primary-yellow);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
         
-        .gallery-item {
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
+        .work-card {
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 69, 0, 0.3);
+        }
+        
+        .work-img {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-red), var(--primary-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
             position: relative;
-            transition: transform 0.3s ease;
+            overflow: hidden;
         }
         
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .gallery-item img {
+        .work-img:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+        }
+        
+        .work-info {
+            padding: 15px;
+        }
+        
+        .work-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-yellow);
+        }
+        
+        .work-year {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+        
+        .work-desc {
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         
         /* 活动时间线 */
@@ -265,7 +359,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(to bottom, #ff4500, #ffd700);
+            background: linear-gradient(to bottom, var(--primary-red), var(--primary-yellow));
             border-radius: 2px;
         }
         
@@ -283,13 +377,13 @@
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: #ff8c00;
-            border: 3px solid #ffd700;
+            background: var(--primary-orange);
+            border: 3px solid var(--primary-yellow);
         }
         
         .timeline-date {
             font-weight: bold;
-            color: #ffd700;
+            color: var(--primary-yellow);
             margin-bottom: 5px;
         }
         
@@ -319,7 +413,7 @@
         }
         
         .btn {
-            background: linear-gradient(to right, #ff4500, #ff8c00);
+            background: linear-gradient(to right, var(--primary-red), var(--primary-orange));
             color: white;
             border: none;
             padding: 12px 25px;
@@ -359,10 +453,45 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
         }
         
         .social-icon:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--dark-red);
             transform: translateY(-5px);
         }
     </style>
@@ -373,6 +502,11 @@
         <div class="flame flame-1"></div>
         <div class="flame flame-2"></div>
         <div class="flame flame-3"></div>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
     </div>
     
     <div class="container">
@@ -393,12 +527,12 @@
         <!-- 导航栏 -->
         <nav>
             <ul>
-                <li><a href="#home">首页</a></li>
-                <li><a href="#about">关于檀健次</a></li>
-                <li><a href="#gallery">作品集</a></li>
-                <li><a href="#events">活动行程</a></li>
-                <li><a href="#support">应援活动</a></li>
-                <li><a href="#contact">留言祝福</a></li>
+                <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> 关于檀健次</a></li>
+                <li><a href="#works"><i class="fas fa-film"></i> 作品集</a></li>
+                <li><a href="#events"><i class="fas fa-calendar-alt"></i> 活动行程</a></li>
+                <li><a href="#support"><i class="fas fa-heart"></i> 应援活动</a></li>
+                <li><a href="#contact"><i class="fas fa-comment"></i> 留言祝福</a></li>
             </ul>
         </nav>
         
@@ -408,19 +542,136 @@
             <div class="left-content">
                 <!-- 关于檀健次 -->
                 <section id="about" class="card">
-                    <h2>关于檀健次</h2>
+                    <h2><i class="fas fa-user"></i> 关于檀健次</h2>
                     <p>檀健次，中国内地男演员、歌手，MIC男团成员。出生于1990年10月5日，广西北海人。他以其出色的演技和独特的个人魅力赢得了众多粉丝的喜爱。</p>
                     <p>代表作品包括电视剧《猎罪图鉴》、《骊歌行》、《今夕何夕》，电影《秘岸》等。他在舞台上的表现力和对角色的深刻理解使他成为当代备受瞩目的青年演员之一。</p>
                 </section>
                 
                 <!-- 作品集 -->
-                <section id="gallery" class="card">
-                    <h2>作品集</h2>
-                    <div class="gallery">
-                        <div class="gallery-item" style="background: linear-gradient(45deg, #ff4500, #ff8c00); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">猎罪图鉴</div>
-                        <div class="gallery-item" style="background: linear-gradient(45deg, #ff8c00, #ffd700); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">骊歌行</div>
-                        <div class="gallery-item" style="background: linear-gradient(45deg, #ffd700, #ff4500); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">今夕何夕</div>
-                        <div class="gallery-item" style="background: linear-gradient(45deg, #ff4500, #ffd700); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">秘岸</div>
+                <section id="works" class="card">
+                    <h2><i class="fas fa-film"></i> 作品集</h2>
+                    
+                    <div class="works-tabs">
+                        <button class="tab-btn active" data-tab="tv">电视剧</button>
+                        <button class="tab-btn" data-tab="movie">电影</button>
+                        <button class="tab-btn" data-tab="variety">综艺</button>
+                        <button class="tab-btn" data-tab="music">音乐</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="tv-tab">
+                        <div class="works-grid">
+                            <div class="work-card">
+                                <div class="work-img">猎罪图鉴</div>
+                                <div class="work-info">
+                                    <div class="work-title">猎罪图鉴</div>
+                                    <div class="work-year">2022年</div>
+                                    <div class="work-desc">饰演天才画像师沈翊，与刑警队长杜城联手破案。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">骊歌行</div>
+                                <div class="work-info">
+                                    <div class="work-title">骊歌行</div>
+                                    <div class="work-year">2021年</div>
+                                    <div class="work-desc">饰演周王，展现精湛演技和古装扮相。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">今夕何夕</div>
+                                <div class="work-info">
+                                    <div class="work-title">今夕何夕</div>
+                                    <div class="work-year">2020年</div>
+                                    <div class="work-desc">饰演三皇子庞钰，深情演绎权谋与爱情。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">三国机密</div>
+                                <div class="work-info">
+                                    <div class="work-title">三国机密</div>
+                                    <div class="work-year">2018年</div>
+                                    <div class="work-desc">饰演曹丕，展现三国时期权谋与野心。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">原来你还在这里</div>
+                                <div class="work-info">
+                                    <div class="work-title">原来你还在这里</div>
+                                    <div class="work-year">2018年</div>
+                                    <div class="work-desc">饰演周子翼，演绎青春爱情故事。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">带着爸爸去留学</div>
+                                <div class="work-info">
+                                    <div class="work-title">带着爸爸去留学</div>
+                                    <div class="work-year">2019年</div>
+                                    <div class="work-desc">饰演陈凯文，展现留学生活与成长。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="movie-tab">
+                        <div class="works-grid">
+                            <div class="work-card">
+                                <div class="work-img">秘岸</div>
+                                <div class="work-info">
+                                    <div class="work-title">秘岸</div>
+                                    <div class="work-year">2009年</div>
+                                    <div class="work-desc">电影处女作，饰演小川，展现青涩演技。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">天师</div>
+                                <div class="work-info">
+                                    <div class="work-title">天师</div>
+                                    <div class="work-year">2015年</div>
+                                    <div class="work-desc">网络电影，饰演南宫珞，展现玄幻魅力。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="variety-tab">
+                        <div class="works-grid">
+                            <div class="work-card">
+                                <div class="work-img">追光吧！哥哥</div>
+                                <div class="work-info">
+                                    <div class="work-title">追光吧！哥哥</div>
+                                    <div class="work-year">2020-2021年</div>
+                                    <div class="work-desc">展现出色唱跳实力，最终获得"追光之星"称号。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">我就是演员</div>
+                                <div class="work-info">
+                                    <div class="work-title">我就是演员</div>
+                                    <div class="work-year">2018年</div>
+                                    <div class="work-desc">凭借《军师联盟》片段获得导师一致好评。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="music-tab">
+                        <div class="works-grid">
+                            <div class="work-card">
+                                <div class="work-img">MIC男团专辑</div>
+                                <div class="work-info">
+                                    <div class="work-title">MIC男团专辑</div>
+                                    <div class="work-year">2010-2017年</div>
+                                    <div class="work-desc">作为MIC男团成员，参与多张专辑录制。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">单曲作品</div>
+                                <div class="work-info">
+                                    <div class="work-title">单曲作品</div>
+                                    <div class="work-year">2018年至今</div>
+                                    <div class="work-desc">《I'm Sorry》、《路过，人间烟火》等个人单曲。</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -429,7 +680,7 @@
             <div class="right-content">
                 <!-- 活动行程 -->
                 <section id="events" class="card">
-                    <h2>近期活动</h2>
+                    <h2><i class="fas fa-calendar-alt"></i> 近期活动</h2>
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-date">2023年11月15日</div>
@@ -452,7 +703,7 @@
                 
                 <!-- 应援活动 -->
                 <section id="support" class="card">
-                    <h2>应援活动</h2>
+                    <h2><i class="fas fa-heart"></i> 应援活动</h2>
                     <p>加入小炭火，一起为檀健次加油！</p>
                     <ul style="margin-left: 20px; margin-top: 10px;">
                         <li>线上打榜投票</li>
@@ -467,7 +718,7 @@
         
         <!-- 留言祝福 -->
         <section id="contact" class="card">
-            <h2>留言祝福</h2>
+            <h2><i class="fas fa-comment"></i> 留言祝福</h2>
             <p>在这里留下你对檀健次的祝福和支持！</p>
             <form class="message-form">
                 <div class="form-group">
@@ -485,10 +736,10 @@
         <!-- 页脚 -->
         <footer>
             <div class="social-links">
-                <a href="#" class="social-icon">微</a>
-                <a href="#" class="social-icon">博</a>
-                <a href="#" class="social-icon">抖</a>
-                <a href="#" class="social-icon">B</a>
+                <a href="#" class="social-icon"><i class="fab fa-weibo"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-douyin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-bilibili"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
             </div>
             <p>© 2023 檀健次粉丝应援站 | 小炭火 版权所有</p>
             <p>本网站为粉丝自发创建，与檀健次先生及其团队无关</p>
@@ -510,10 +761,51 @@
             }
         }
         
-        // 初始化刺猬刺
+        // 作品集标签切换
+        function initWorksTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 移除所有active类
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // 添加active类到当前按钮和对应内容
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab') + '-tab';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        }
+        
+        // 返回顶部功能
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // 初始化
         document.addEventListener('DOMContentLoaded', function() {
             createSpikes('spikes-container');
             createSpikes('spikes-container-2');
+            initWorksTabs();
+            initBackToTop();
         });
     </script>
 </body>
