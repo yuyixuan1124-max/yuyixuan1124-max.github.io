@@ -3,573 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>檀健次 - 个人主页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>檀健次粉丝应援站 | 小炭火</title>
     <style>
+        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-        }
-        
-        :root {
-            --primary-color: #1a1a2e;
-            --secondary-color: #16213e;
-            --accent-color: #0f3460;
-            --highlight-color: #e94560;
-            --text-color: #f1f1f1;
-            --light-text: #b8b8b8;
+            font-family: 'Microsoft YaHei', sans-serif;
         }
         
         body {
-            background-color: var(--primary-color);
-            color: var(--text-color);
+            background: linear-gradient(135deg, #ff4500, #ff8c00, #ffd700);
+            color: #fff;
             line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
             overflow-x: hidden;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 导航栏 */
-        header {
-            background-color: rgba(22, 33, 62, 0.95);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--highlight-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--highlight-color);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--highlight-color);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-        
-        /* 英雄区域 */
-        .hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
-            opacity: 0.2;
-            border-radius: 50%;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .hero-text {
-            flex: 1;
-            padding-right: 40px;
-        }
-        
-        .hero-image {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.5s;
-        }
-        
-        .hero-image:hover img {
-            transform: scale(1.03);
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero h1 span {
-            color: var(--highlight-color);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--light-text);
-            max-width: 500px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--highlight-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid var(--highlight-color);
-        }
-        
-        .btn:hover {
-            background-color: transparent;
-            color: var(--highlight-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--highlight-color);
-            margin-left: 15px;
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--highlight-color);
-            color: white;
-        }
-        
-        /* 关于区域 */
-        .about {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            display: inline-block;
-            position: relative;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--highlight-color);
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--highlight-color);
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--light-text);
-        }
-        
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* 作品区域 */
-        .works {
-            padding: 100px 0;
-            background-color: var(--primary-color);
-        }
-        
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .work-card {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .work-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-        
-        .work-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .work-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .work-card:hover .work-image img {
-            transform: scale(1.1);
-        }
-        
-        .work-info {
             padding: 20px;
         }
         
-        .work-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        /* 火焰背景效果 */
+        .fire-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
         }
         
-        .work-info p {
-            color: var(--light-text);
-            font-size: 0.9rem;
+        .flame {
+            position: absolute;
+            bottom: 0;
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 3s infinite alternate;
         }
         
-        /* 联系区域 */
-        .contact {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
+        .flame-1 {
+            width: 100px;
+            height: 150px;
+            background: radial-gradient(circle, #ff4500, #ff8c00, transparent 70%);
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .flame-2 {
+            width: 80px;
+            height: 120px;
+            background: radial-gradient(circle, #ff8c00, #ffd700, transparent 70%);
+            left: 50%;
+            animation-delay: 1s;
+        }
+        
+        .flame-3 {
+            width: 90px;
+            height: 130px;
+            background: radial-gradient(circle, #ff4500, #ff8c00, transparent 70%);
+            right: 20%;
+            animation-delay: 2s;
+        }
+        
+        @keyframes flicker {
+            0%, 100% {
+                transform: scaleY(1) translateY(0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scaleY(1.1) translateY(-10px);
+                opacity: 1;
+            }
+        }
+        
+        /* 头部样式 */
+        header {
             text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .hedgehog {
+            width: 80px;
+            height: 50px;
+            background: #ff8c00;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 20px;
+        }
+        
+        .hedgehog:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #ffd700, #ff8c00);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .hedgehog:after {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 30px;
+            background: linear-gradient(90deg, transparent 0%, #ff4500 20%, #ff8c00 50%, #ff4500 80%, transparent 100%);
+            top: -15px;
+            left: -10%;
+            border-radius: 50%;
+            z-index: 0;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+        }
+        
+        .spikes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .spike {
+            position: absolute;
+            width: 8px;
+            height: 25px;
+            background: linear-gradient(to top, #ff4500, #ff8c00);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff4500, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 导航栏 */
+        nav {
+            background: rgba(255, 69, 0, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* 主要内容区 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card h2 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+            padding-bottom: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 活动时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff4500, #ffd700);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ff8c00;
+            border: 3px solid #ffd700;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+        
+        /* 粉丝留言区 */
+        .message-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #ff4500, #ff8c00);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+        }
+        
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 30px;
+            margin: 20px 0;
         }
         
-        .social-link {
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         
-        .social-link:hover {
-            background-color: var(--highlight-color);
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
-        }
-        
-        /* 页脚 */
-        footer {
-            background-color: var(--primary-color);
-            padding: 30px 0;
-            text-align: center;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .hero-content, .about-content {
-                flex-direction: column;
-            }
-            
-            .hero-text, .about-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-                text-align: center;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                flex-direction: column;
-                background-color: var(--secondary-color);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 20px 0;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">檀健<span>次</span></a>
-                <ul class="nav-links">
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#about">关于</a></li>
-                    <li><a href="#works">作品</a></li>
-                    <li><a href="#contact">联系</a></li>
-                </ul>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
+    <!-- 火焰背景 -->
+    <div class="fire-bg">
+        <div class="flame flame-1"></div>
+        <div class="flame flame-2"></div>
+        <div class="flame flame-3"></div>
+    </div>
+    
+    <div class="container">
+        <!-- 网站头部 -->
+        <header>
+            <div class="logo">
+                <div class="hedgehog">
+                    <div class="spikes" id="spikes-container"></div>
                 </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- 英雄区域 -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>檀健次<br><span>演员 · 歌手</span></h1>
-                    <p>中国内地男演员、歌手，MIC男团成员。凭借出色的演技和独特的个人魅力，在多部影视作品中塑造了令人印象深刻的角色。</p>
-                    <a href="#works" class="btn">查看作品</a>
-                    <a href="#contact" class="btn btn-outline">关注我</a>
+                <h1>檀健次应援站</h1>
+                <div class="hedgehog">
+                    <div class="spikes" id="spikes-container-2"></div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/500x600/0f3460/e94560?text=檀健次" alt="檀健次">
-                </div>
+            </div>
+            <p class="subtitle">小炭火 · 永远支持檀健次</p>
+        </header>
+        
+        <!-- 导航栏 -->
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于檀健次</a></li>
+                <li><a href="#gallery">作品集</a></li>
+                <li><a href="#events">活动行程</a></li>
+                <li><a href="#support">应援活动</a></li>
+                <li><a href="#contact">留言祝福</a></li>
+            </ul>
+        </nav>
+        
+        <!-- 主要内容区 -->
+        <div class="main-content">
+            <!-- 左侧内容 -->
+            <div class="left-content">
+                <!-- 关于檀健次 -->
+                <section id="about" class="card">
+                    <h2>关于檀健次</h2>
+                    <p>檀健次，中国内地男演员、歌手，MIC男团成员。出生于1990年10月5日，广西北海人。他以其出色的演技和独特的个人魅力赢得了众多粉丝的喜爱。</p>
+                    <p>代表作品包括电视剧《猎罪图鉴》、《骊歌行》、《今夕何夕》，电影《秘岸》等。他在舞台上的表现力和对角色的深刻理解使他成为当代备受瞩目的青年演员之一。</p>
+                </section>
+                
+                <!-- 作品集 -->
+                <section id="gallery" class="card">
+                    <h2>作品集</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" style="background: linear-gradient(45deg, #ff4500, #ff8c00); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">猎罪图鉴</div>
+                        <div class="gallery-item" style="background: linear-gradient(45deg, #ff8c00, #ffd700); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">骊歌行</div>
+                        <div class="gallery-item" style="background: linear-gradient(45deg, #ffd700, #ff4500); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">今夕何夕</div>
+                        <div class="gallery-item" style="background: linear-gradient(45deg, #ff4500, #ffd700); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">秘岸</div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- 右侧内容 -->
+            <div class="right-content">
+                <!-- 活动行程 -->
+                <section id="events" class="card">
+                    <h2>近期活动</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023年11月15日</div>
+                            <div class="timeline-content">新剧《xxx》开机仪式</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023年11月28日</div>
+                            <div class="timeline-content">品牌代言直播活动</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023年12月5日</div>
+                            <div class="timeline-content">粉丝见面会 - 北京站</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023年12月20日</div>
+                            <div class="timeline-content">综艺节目《xxx》录制</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 应援活动 -->
+                <section id="support" class="card">
+                    <h2>应援活动</h2>
+                    <p>加入小炭火，一起为檀健次加油！</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>线上打榜投票</li>
+                        <li>生日应援计划</li>
+                        <li>公益应援活动</li>
+                        <li>作品宣传支持</li>
+                    </ul>
+                    <button class="btn" style="margin-top: 15px;">加入应援</button>
+                </section>
             </div>
         </div>
-    </section>
-
-    <!-- 关于区域 -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>关于我</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>个人简介</h3>
-                    <p>檀健次，1990年10月5日出生于广西北海，毕业于北京体育大学体育艺术系表演专业，中国内地男演员、歌手，MIC男团成员。</p>
-                    <p>2007年，被太合麦田选中，作为训练生进行为期四年的培训。2010年，以MIC男团成员身份正式出道，在团队中负责低音部分，并参与编舞。2014年，发行首支个人单曲《Fly Away》。</p>
-                    <p>2016年，主演悬疑电影《恐怖笔记》。2018年，出演电视剧《三国机密之潜龙在渊》。2020年，主演的都市情感剧《爱的厘米》播出。2021年，主演的都市爱情剧《原来我很爱你》播出。</p>
-                    <p>2022年，主演的古装轻喜剧《卿卿日常》播出，在剧中饰演尹岐；同年，主演的刑侦探案剧《猎罪图鉴》播出，在剧中饰演沈翊。</p>
+        
+        <!-- 留言祝福 -->
+        <section id="contact" class="card">
+            <h2>留言祝福</h2>
+            <p>在这里留下你对檀健次的祝福和支持！</p>
+            <form class="message-form">
+                <div class="form-group">
+                    <label for="name">昵称</label>
+                    <input type="text" id="name" placeholder="请输入您的昵称">
                 </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/500x600/16213e/e94560?text=檀健次写真" alt="檀健次写真">
+                <div class="form-group">
+                    <label for="message">留言内容</label>
+                    <textarea id="message" rows="5" placeholder="请输入您的祝福..."></textarea>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 作品区域 -->
-    <section class="works" id="works">
-        <div class="container">
-            <div class="section-title">
-                <h2>代表作品</h2>
-            </div>
-            <div class="works-grid">
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src="https://via.placeholder.com/400x250/0f3460/e94560?text=猎罪图鉴" alt="猎罪图鉴">
-                    </div>
-                    <div class="work-info">
-                        <h3>猎罪图鉴</h3>
-                        <p>2022年 · 饰演沈翊</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src="https://via.placeholder.com/400x250/0f3460/e94560?text=卿卿日常" alt="卿卿日常">
-                    </div>
-                    <div class="work-info">
-                        <h3>卿卿日常</h3>
-                        <p>2022年 · 饰演尹岐</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src="https://via.placeholder.com/400x250/0f3460/e94560?text=原来我很爱你" alt="原来我很爱你">
-                    </div>
-                    <div class="work-info">
-                        <h3>原来我很爱你</h3>
-                        <p>2021年 · 饰演苏念衾</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-image">
-                        <img src="https://via.placeholder.com/400x250/0f3460/e94560?text=MIC男团" alt="MIC男团">
-                    </div>
-                    <div class="work-info">
-                        <h3>MIC男团</h3>
-                        <p>2010年 · 歌手身份出道</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 联系区域 -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>关注我</h2>
-            </div>
-            <p>通过以下社交媒体平台关注檀健次的最新动态</p>
+                <button type="submit" class="btn">提交留言</button>
+            </form>
+        </section>
+        
+        <!-- 页脚 -->
+        <footer>
             <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-douban"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon">微</a>
+                <a href="#" class="social-icon">博</a>
+                <a href="#" class="social-icon">抖</a>
+                <a href="#" class="social-icon">B</a>
             </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 檀健次个人主页. 所有权利保留.</p>
-        </div>
-    </footer>
+            <p>© 2023 檀健次粉丝应援站 | 小炭火 版权所有</p>
+            <p>本网站为粉丝自发创建，与檀健次先生及其团队无关</p>
+        </footer>
+    </div>
 
     <script>
-        // 移动端菜单切换
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                    
-                    // 关闭移动端菜单
-                    document.querySelector('.nav-links').classList.remove('active');
-                }
-            });
-        });
-        
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(22, 33, 62, 0.98)';
-            } else {
-                header.style.backgroundColor = 'rgba(22, 33, 62, 0.95)';
+        // 生成刺猬的刺
+        function createSpikes(containerId) {
+            const container = document.getElementById(containerId);
+            const spikesCount = 12;
+            
+            for (let i = 0; i < spikesCount; i++) {
+                const spike = document.createElement('div');
+                spike.className = 'spike';
+                const angle = (360 / spikesCount) * i;
+                spike.style.transform = `rotate(${angle}deg) translateY(-10px)`;
+                container.appendChild(spike);
             }
+        }
+        
+        // 初始化刺猬刺
+        document.addEventListener('DOMContentLoaded', function() {
+            createSpikes('spikes-container');
+            createSpikes('spikes-container-2');
         });
     </script>
 </body>
