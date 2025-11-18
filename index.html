@@ -105,53 +105,11 @@
             margin-bottom: 20px;
         }
         
-        .hedgehog {
-            width: 80px;
-            height: 50px;
-            background: var(--primary-orange);
-            border-radius: 50%;
-            position: relative;
-            margin: 0 20px;
-        }
-        
-        .hedgehog:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, var(--primary-yellow), var(--primary-orange));
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .hedgehog:after {
-            content: "";
-            position: absolute;
-            width: 120%;
-            height: 30px;
-            background: linear-gradient(90deg, transparent 0%, var(--primary-red) 20%, var(--primary-orange) 50%, var(--primary-red) 80%, transparent 100%);
-            top: -15px;
-            left: -10%;
-            border-radius: 50%;
-            z-index: 0;
-            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
-        }
-        
-        .spikes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
-        .spike {
-            position: absolute;
-            width: 8px;
-            height: 25px;
-            background: linear-gradient(to top, var(--primary-red), var(--primary-orange));
-            border-radius: 50% 50% 0 0;
-            transform-origin: bottom center;
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            margin: 0 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         h1 {
@@ -346,6 +304,67 @@
             line-height: 1.4;
         }
         
+        /* 音乐作品样式 */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .music-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .music-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .music-icon {
+            font-size: 2rem;
+            color: var(--primary-yellow);
+            margin-right: 15px;
+        }
+        
+        .music-info {
+            flex: 1;
+        }
+        
+        .music-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-yellow);
+        }
+        
+        .music-year {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .play-btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            background: var(--dark-red);
+            transform: scale(1.1);
+        }
+        
         /* 活动时间线 */
         .timeline {
             position: relative;
@@ -513,12 +532,12 @@
         <!-- 网站头部 -->
         <header>
             <div class="logo">
-                <div class="hedgehog">
-                    <div class="spikes" id="spikes-container"></div>
+                <div class="logo-icon">
+                    <i class="fas fa-fire"></i>
                 </div>
                 <h1>檀健次应援站</h1>
-                <div class="hedgehog">
-                    <div class="spikes" id="spikes-container-2"></div>
+                <div class="logo-icon">
+                    <i class="fas fa-fire"></i>
                 </div>
             </div>
             <p class="subtitle">小炭火 · 永远支持檀健次</p>
@@ -527,9 +546,9 @@
         <!-- 导航栏 -->
         <nav>
             <ul>
-                <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
                 <li><a href="#about"><i class="fas fa-user"></i> 关于檀健次</a></li>
-                <li><a href="#works"><i class="fas fa-film"></i> 作品集</a></li>
+                <li><a href="#works"><i class="fas fa-film"></i> 影视作品</a></li>
+                <li><a href="#music"><i class="fas fa-music"></i> 音乐作品</a></li>
                 <li><a href="#events"><i class="fas fa-calendar-alt"></i> 活动行程</a></li>
                 <li><a href="#support"><i class="fas fa-heart"></i> 应援活动</a></li>
                 <li><a href="#contact"><i class="fas fa-comment"></i> 留言祝福</a></li>
@@ -547,15 +566,14 @@
                     <p>代表作品包括电视剧《猎罪图鉴》、《骊歌行》、《今夕何夕》，电影《秘岸》等。他在舞台上的表现力和对角色的深刻理解使他成为当代备受瞩目的青年演员之一。</p>
                 </section>
                 
-                <!-- 作品集 -->
+                <!-- 影视作品 -->
                 <section id="works" class="card">
-                    <h2><i class="fas fa-film"></i> 作品集</h2>
+                    <h2><i class="fas fa-film"></i> 影视作品</h2>
                     
                     <div class="works-tabs">
                         <button class="tab-btn active" data-tab="tv">电视剧</button>
                         <button class="tab-btn" data-tab="movie">电影</button>
                         <button class="tab-btn" data-tab="variety">综艺</button>
-                        <button class="tab-btn" data-tab="music">音乐</button>
                     </div>
                     
                     <div class="tab-content active" id="tv-tab">
@@ -563,49 +581,57 @@
                             <div class="work-card">
                                 <div class="work-img">猎罪图鉴</div>
                                 <div class="work-info">
-                                    <div class="work-title">猎罪图鉴</div>
-                                    <div class="work-year">2022年</div>
-                                    <div class="work-desc">饰演天才画像师沈翊，与刑警队长杜城联手破案。</div>
+                                    <div class="work-title">猎罪图鉴 (2022)</div>
+                                    <div class="work-desc">饰演天才画像师沈翊，与刑警队长杜城联手破案，展现精湛演技。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">骊歌行</div>
                                 <div class="work-info">
-                                    <div class="work-title">骊歌行</div>
-                                    <div class="work-year">2021年</div>
-                                    <div class="work-desc">饰演周王，展现精湛演技和古装扮相。</div>
+                                    <div class="work-title">骊歌行 (2021)</div>
+                                    <div class="work-desc">饰演周王，展现精湛演技和古装扮相，深受观众喜爱。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">今夕何夕</div>
                                 <div class="work-info">
-                                    <div class="work-title">今夕何夕</div>
-                                    <div class="work-year">2020年</div>
-                                    <div class="work-desc">饰演三皇子庞钰，深情演绎权谋与爱情。</div>
+                                    <div class="work-title">今夕何夕 (2020)</div>
+                                    <div class="work-desc">饰演三皇子庞钰，深情演绎权谋与爱情，展现多样演技。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">三国机密</div>
                                 <div class="work-info">
-                                    <div class="work-title">三国机密</div>
-                                    <div class="work-year">2018年</div>
-                                    <div class="work-desc">饰演曹丕，展现三国时期权谋与野心。</div>
+                                    <div class="work-title">三国机密 (2018)</div>
+                                    <div class="work-desc">饰演曹丕，展现三国时期权谋与野心，演技获好评。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">原来你还在这里</div>
                                 <div class="work-info">
-                                    <div class="work-title">原来你还在这里</div>
-                                    <div class="work-year">2018年</div>
-                                    <div class="work-desc">饰演周子翼，演绎青春爱情故事。</div>
+                                    <div class="work-title">原来你还在这里 (2018)</div>
+                                    <div class="work-desc">饰演周子翼，演绎青春爱情故事，展现阳光形象。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">带着爸爸去留学</div>
                                 <div class="work-info">
-                                    <div class="work-title">带着爸爸去留学</div>
-                                    <div class="work-year">2019年</div>
-                                    <div class="work-desc">饰演陈凯文，展现留学生活与成长。</div>
+                                    <div class="work-title">带着爸爸去留学 (2019)</div>
+                                    <div class="work-desc">饰演陈凯文，展现留学生活与成长，演技自然真实。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">军师联盟</div>
+                                <div class="work-info">
+                                    <div class="work-title">军师联盟 (2017)</div>
+                                    <div class="work-desc">饰演司马昭，展现历史人物风采，演技获认可。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">小丈夫</div>
+                                <div class="work-info">
+                                    <div class="work-title">小丈夫 (2016)</div>
+                                    <div class="work-desc">饰演孙志安，展现都市情感故事，演技渐入佳境。</div>
                                 </div>
                             </div>
                         </div>
@@ -616,17 +642,22 @@
                             <div class="work-card">
                                 <div class="work-img">秘岸</div>
                                 <div class="work-info">
-                                    <div class="work-title">秘岸</div>
-                                    <div class="work-year">2009年</div>
-                                    <div class="work-desc">电影处女作，饰演小川，展现青涩演技。</div>
+                                    <div class="work-title">秘岸 (2009)</div>
+                                    <div class="work-desc">电影处女作，饰演小川，展现青涩演技，初露锋芒。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">天师</div>
                                 <div class="work-info">
-                                    <div class="work-title">天师</div>
-                                    <div class="work-year">2015年</div>
-                                    <div class="work-desc">网络电影，饰演南宫珞，展现玄幻魅力。</div>
+                                    <div class="work-title">天师 (2015)</div>
+                                    <div class="work-desc">网络电影，饰演南宫珞，展现玄幻魅力，演技成熟。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">恐怖笔记</div>
+                                <div class="work-info">
+                                    <div class="work-title">恐怖笔记 (2016)</div>
+                                    <div class="work-desc">饰演霍强，挑战恐怖题材，展现多样演技。</div>
                                 </div>
                             </div>
                         </div>
@@ -637,40 +668,103 @@
                             <div class="work-card">
                                 <div class="work-img">追光吧！哥哥</div>
                                 <div class="work-info">
-                                    <div class="work-title">追光吧！哥哥</div>
-                                    <div class="work-year">2020-2021年</div>
-                                    <div class="work-desc">展现出色唱跳实力，最终获得"追光之星"称号。</div>
+                                    <div class="work-title">追光吧！哥哥 (2020-2021)</div>
+                                    <div class="work-desc">展现出色唱跳实力，最终获得"追光之星"称号，人气大增。</div>
                                 </div>
                             </div>
                             <div class="work-card">
                                 <div class="work-img">我就是演员</div>
                                 <div class="work-info">
-                                    <div class="work-title">我就是演员</div>
-                                    <div class="work-year">2018年</div>
-                                    <div class="work-desc">凭借《军师联盟》片段获得导师一致好评。</div>
+                                    <div class="work-title">我就是演员 (2018)</div>
+                                    <div class="work-desc">凭借《军师联盟》片段获得导师一致好评，演技获认可。</div>
+                                </div>
+                            </div>
+                            <div class="work-card">
+                                <div class="work-img">快乐大本营</div>
+                                <div class="work-info">
+                                    <div class="work-title">快乐大本营 (多次)</div>
+                                    <div class="work-desc">多次参与录制，展现综艺感和亲和力，深受观众喜爱。</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="tab-content" id="music-tab">
-                        <div class="works-grid">
-                            <div class="work-card">
-                                <div class="work-img">MIC男团专辑</div>
-                                <div class="work-info">
-                                    <div class="work-title">MIC男团专辑</div>
-                                    <div class="work-year">2010-2017年</div>
-                                    <div class="work-desc">作为MIC男团成员，参与多张专辑录制。</div>
-                                </div>
+                </section>
+                
+                <!-- 音乐作品 -->
+                <section id="music" class="card">
+                    <h2><i class="fas fa-music"></i> 音乐作品</h2>
+                    <div class="music-grid">
+                        <div class="music-card">
+                            <div class="music-icon">
+                                <i class="fas fa-headphones"></i>
                             </div>
-                            <div class="work-card">
-                                <div class="work-img">单曲作品</div>
-                                <div class="work-info">
-                                    <div class="work-title">单曲作品</div>
-                                    <div class="work-year">2018年至今</div>
-                                    <div class="work-desc">《I'm Sorry》、《路过，人间烟火》等个人单曲。</div>
-                                </div>
+                            <div class="music-info">
+                                <div class="music-title">I'm Sorry</div>
+                                <div class="music-year">个人单曲 (2018)</div>
                             </div>
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="music-card">
+                            <div class="music-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="music-info">
+                                <div class="music-title">路过，人间烟火</div>
+                                <div class="music-year">个人单曲 (2020)</div>
+                            </div>
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="music-card">
+                            <div class="music-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="music-info">
+                                <div class="music-title">MIC男团 - 《Rock Star》</div>
+                                <div class="music-year">专辑 (2010)</div>
+                            </div>
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="music-card">
+                            <div class="music-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="music-info">
+                                <div class="music-title">MIC男团 - 《色·COLOR》</div>
+                                <div class="music-year">专辑 (2012)</div>
+                            </div>
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="music-card">
+                            <div class="music-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="music-info">
+                                <div class="music-title">MIC男团 - 《SOLO》</div>
+                                <div class="music-year">专辑 (2014)</div>
+                            </div>
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="music-card">
+                            <div class="music-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="music-info">
+                                <div class="music-title">电视剧《猎罪图鉴》OST</div>
+                                <div class="music-year">原声带 (2022)</div>
+                            </div>
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -698,6 +792,10 @@
                             <div class="timeline-date">2023年12月20日</div>
                             <div class="timeline-content">综艺节目《xxx》录制</div>
                         </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024年1月10日</div>
+                            <div class="timeline-content">新专辑发布会</div>
+                        </div>
                     </div>
                 </section>
                 
@@ -710,6 +808,7 @@
                         <li>生日应援计划</li>
                         <li>公益应援活动</li>
                         <li>作品宣传支持</li>
+                        <li>粉丝见面会组织</li>
                     </ul>
                     <button class="btn" style="margin-top: 15px;">加入应援</button>
                 </section>
@@ -747,20 +846,6 @@
     </div>
 
     <script>
-        // 生成刺猬的刺
-        function createSpikes(containerId) {
-            const container = document.getElementById(containerId);
-            const spikesCount = 12;
-            
-            for (let i = 0; i < spikesCount; i++) {
-                const spike = document.createElement('div');
-                spike.className = 'spike';
-                const angle = (360 / spikesCount) * i;
-                spike.style.transform = `rotate(${angle}deg) translateY(-10px)`;
-                container.appendChild(spike);
-            }
-        }
-        
         // 作品集标签切换
         function initWorksTabs() {
             const tabBtns = document.querySelectorAll('.tab-btn');
@@ -800,12 +885,54 @@
             });
         }
         
+        // 音乐播放按钮功能
+        function initMusicPlayer() {
+            const playBtns = document.querySelectorAll('.play-btn');
+            
+            playBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const isPlaying = this.classList.contains('playing');
+                    
+                    // 重置所有按钮
+                    playBtns.forEach(b => {
+                        b.innerHTML = '<i class="fas fa-play"></i>';
+                        b.classList.remove('playing');
+                    });
+                    
+                    if (!isPlaying) {
+                        this.innerHTML = '<i class="fas fa-pause"></i>';
+                        this.classList.add('playing');
+                        // 这里可以添加实际播放音乐的逻辑
+                    }
+                });
+            });
+        }
+        
+        // 平滑滚动到锚点
+        function initSmoothScroll() {
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
-            createSpikes('spikes-container');
-            createSpikes('spikes-container-2');
             initWorksTabs();
             initBackToTop();
+            initMusicPlayer();
+            initSmoothScroll();
         });
     </script>
 </body>
