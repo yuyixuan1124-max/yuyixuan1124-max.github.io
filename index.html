@@ -304,6 +304,91 @@
             line-height: 1.4;
         }
         
+        /* 完整作品列表样式 */
+        .full-works-list {
+            margin-top: 20px;
+        }
+        
+        .works-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .works-table th {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 15px;
+            text-align: left;
+            color: var(--primary-yellow);
+        }
+        
+        .works-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .works-table tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .works-table .role {
+            color: var(--primary-yellow);
+            font-weight: bold;
+        }
+        
+        /* 图片展示区 */
+        .gallery-section {
+            margin-top: 30px;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 69, 0, 0.4);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
         /* 音乐作品样式 */
         .music-grid {
             display: grid;
@@ -363,47 +448,6 @@
         .play-btn:hover {
             background: var(--dark-red);
             transform: scale(1.1);
-        }
-        
-        /* 活动时间线 */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary-red), var(--primary-yellow));
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-        }
-        
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: -36px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--primary-orange);
-            border: 3px solid var(--primary-yellow);
-        }
-        
-        .timeline-date {
-            font-weight: bold;
-            color: var(--primary-yellow);
-            margin-bottom: 5px;
         }
         
         /* 粉丝留言区 */
@@ -549,217 +593,413 @@
                 <li><a href="#about"><i class="fas fa-user"></i> 关于檀健次</a></li>
                 <li><a href="#works"><i class="fas fa-film"></i> 影视作品</a></li>
                 <li><a href="#music"><i class="fas fa-music"></i> 音乐作品</a></li>
-                <li><a href="#events"><i class="fas fa-calendar-alt"></i> 活动行程</a></li>
-                <li><a href="#support"><i class="fas fa-heart"></i> 应援活动</a></li>
+                <li><a href="#gallery"><i class="fas fa-images"></i> 图片展示</a></li>
                 <li><a href="#contact"><i class="fas fa-comment"></i> 留言祝福</a></li>
             </ul>
         </nav>
+        
+        <!-- 关于檀健次 -->
+        <section id="about" class="card">
+            <h2><i class="fas fa-user"></i> 关于檀健次</h2>
+            <p>檀健次，中国内地男演员、歌手，MIC男团成员。出生于1990年10月5日，广西北海人。他以其出色的演技和独特的个人魅力赢得了众多粉丝的喜爱。</p>
+            <p>代表作品包括电视剧《猎罪图鉴》、《长相思》、《你安全吗？》，电影《秘岸》、《被我弄丢的你》等。他在舞台上的表现力和对角色的深刻理解使他成为当代备受瞩目的青年演员之一。</p>
+        </section>
+        
+        <!-- 影视作品 -->
+        <section id="works" class="card">
+            <h2><i class="fas fa-film"></i> 影视作品</h2>
+            
+            <div class="works-tabs">
+                <button class="tab-btn active" data-tab="movie">电影</button>
+                <button class="tab-btn" data-tab="tv">电视剧</button>
+                <button class="tab-btn" data-tab="other">其他作品</button>
+            </div>
+            
+            <!-- 电影作品 -->
+            <div class="tab-content active" id="movie-tab">
+                <div class="works-grid">
+                    <div class="work-card">
+                        <div class="work-img">秘岸</div>
+                        <div class="work-info">
+                            <div class="work-title">秘岸 (2009)</div>
+                            <div class="work-desc">饰演小川，首次涉足表演领域，展现青涩演技。</div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-img">盗版猫</div>
+                        <div class="work-info">
+                            <div class="work-title">盗版猫 (2009)</div>
+                            <div class="work-desc">饰演嘻哈一族，展现多样表演风格。</div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-img">宠爱</div>
+                        <div class="work-info">
+                            <div class="work-title">宠爱 (2019)</div>
+                            <div class="work-desc">饰演罗华，暗恋邻居的电视台工作人员。</div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-img">被我弄丢的你</div>
+                        <div class="work-info">
+                            <div class="work-title">被我弄丢的你 (2024)</div>
+                            <div class="work-desc">饰演白晓宇，改编自郑执小说，关于爱情与成长的故事。</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="full-works-list">
+                    <h3>完整电影作品列表</h3>
+                    <table class="works-table">
+                        <thead>
+                            <tr>
+                                <th>年份</th>
+                                <th>片名</th>
+                                <th>饰演</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2007年</td>
+                                <td>《秘岸》</td>
+                                <td class="role">小川</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2009年</td>
+                                <td>《盗版猫》</td>
+                                <td class="role">嘻哈一族</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2016年</td>
+                                <td>《网游之梦回诸仙》</td>
+                                <td class="role">郭笑丹</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2016年</td>
+                                <td>《恐怖笔记》</td>
+                                <td class="role">邹衍</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2016年</td>
+                                <td>《天师伏魔2弑魂》</td>
+                                <td class="role">高远</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2016年</td>
+                                <td>《天师伏魔3重生》</td>
+                                <td class="role">高远</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2019年</td>
+                                <td>《宠爱》</td>
+                                <td class="role">罗华</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2024年</td>
+                                <td>《被我弄丢的你》</td>
+                                <td class="role">白晓宇</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2025年</td>
+                                <td>《三国的星空第一部》</td>
+                                <td class="role">曹操</td>
+                                <td>配音演出</td>
+                            </tr>
+                            <tr>
+                                <td>2025年</td>
+                                <td>《震耳欲聋》</td>
+                                <td class="role">李淇</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 电视剧作品 -->
+            <div class="tab-content" id="tv-tab">
+                <div class="works-grid">
+                    <div class="work-card">
+                        <div class="work-img">猎罪图鉴</div>
+                        <div class="work-info">
+                            <div class="work-title">猎罪图鉴 (2022)</div>
+                            <div class="work-desc">饰演天才画像师沈翊，与刑警队长杜城联手破案，展现精湛演技。</div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-img">长相思</div>
+                        <div class="work-info">
+                            <div class="work-title">长相思 (2023)</div>
+                            <div class="work-desc">饰演相柳/防风邶，深情演绎九头蛇妖，角色深入人心。</div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-img">你安全吗？</div>
+                        <div class="work-info">
+                            <div class="work-title">你安全吗？ (2022)</div>
+                            <div class="work-desc">饰演秦淮，网络安全公司老板，展现科技与悬疑的完美结合。</div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-img">滤镜</div>
+                        <div class="work-info">
+                            <div class="work-title">滤镜 (2025)</div>
+                            <div class="work-desc">饰演唐奇，与李兰迪搭档，展现奇幻爱情故事。</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="full-works-list">
+                    <h3>完整电视剧作品列表</h3>
+                    <table class="works-table">
+                        <thead>
+                            <tr>
+                                <th>首播年份</th>
+                                <th>剧名</th>
+                                <th>饰演</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2014年</td>
+                                <td>《深爱食堂》</td>
+                                <td class="role">小博</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2015年</td>
+                                <td>《花样江湖》</td>
+                                <td class="role">檀健次</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2015年</td>
+                                <td>《男神执事团》</td>
+                                <td class="role">花生酥</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2015年</td>
+                                <td>《龙门镖局之为2归来》</td>
+                                <td class="role">令狐显扬</td>
+                                <td>客串</td>
+                            </tr>
+                            <tr>
+                                <td>2017年</td>
+                                <td>《大军师司马懿之军师联盟》</td>
+                                <td class="role">司马昭</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2017年</td>
+                                <td>《大军师司马懿之虎啸龙吟》</td>
+                                <td class="role">司马昭</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2018年</td>
+                                <td>《三国机密之潜龙在渊》</td>
+                                <td class="role">曹丕</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2018年</td>
+                                <td>《原来你还在这里》</td>
+                                <td class="role">周子翼</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2019年</td>
+                                <td>《带着爸爸去留学》</td>
+                                <td class="role">陈凯文</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2020年</td>
+                                <td>《无心法师III》</td>
+                                <td class="role">猴妖</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2020年</td>
+                                <td>《鬓边不是海棠红》</td>
+                                <td class="role">陈纫香</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2020年</td>
+                                <td>《爱的厘米》</td>
+                                <td class="role">关震雷</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2020年</td>
+                                <td>《今夕何夕》</td>
+                                <td class="role">庞钰</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2021年</td>
+                                <td>《骊歌行》</td>
+                                <td class="role">周王</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2021年</td>
+                                <td>《一宅家族》</td>
+                                <td class="role">健次郎</td>
+                                <td>客串，网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2022年</td>
+                                <td>《将爱之因为爱情》</td>
+                                <td class="role">史一郎</td>
+                                <td>2011年拍摄</td>
+                            </tr>
+                            <tr>
+                                <td>2022年</td>
+                                <td>《猎罪图鉴》</td>
+                                <td class="role">沈翊</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2022年</td>
+                                <td>《你安全吗？》</td>
+                                <td class="role">秦淮</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2023年</td>
+                                <td>《长相思 第一季》</td>
+                                <td class="role">相柳/防风邶</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2023年</td>
+                                <td>《很想很想你》</td>
+                                <td class="role">莫青成/锖青磁</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2024年</td>
+                                <td>《长相思 第二季》</td>
+                                <td class="role">相柳/防风邶</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2024年</td>
+                                <td>《四方馆》</td>
+                                <td class="role">元莫</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2024年</td>
+                                <td>《猎罪图鉴2》</td>
+                                <td class="role">沈翊</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>2025年</td>
+                                <td>《滤镜》</td>
+                                <td class="role">唐奇</td>
+                                <td>网剧</td>
+                            </tr>
+                            <tr>
+                                <td>待播</td>
+                                <td>《烽火流金》（原名《杀破狼》）</td>
+                                <td class="role">顾昀</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>待播</td>
+                                <td>《爱情有烟火》</td>
+                                <td class="role">李亦非</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 其他作品 -->
+            <div class="tab-content" id="other-tab">
+                <div class="full-works-list">
+                    <h3>音乐剧</h3>
+                    <table class="works-table">
+                        <thead>
+                            <tr>
+                                <th>年份</th>
+                                <th>剧名</th>
+                                <th>饰演</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2015年</td>
+                                <td>《小时代》</td>
+                                <td class="role">简溪</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 style="margin-top: 30px;">MV</h3>
+                    <table class="works-table">
+                        <thead>
+                            <tr>
+                                <th>年份</th>
+                                <th>名称</th>
+                                <th>饰演</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2012年</td>
+                                <td>《90后青春手写体-爱的时光机》</td>
+                                <td class="role">-</td>
+                            </tr>
+                            <tr>
+                                <td>2013年</td>
+                                <td>《风起来的时光》周子琰</td>
+                                <td class="role">男主角</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 style="margin-top: 30px;">微电影</h3>
+                    <table class="works-table">
+                        <thead>
+                            <tr>
+                                <th>年份</th>
+                                <th>名称</th>
+                                <th>饰演</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2016年</td>
+                                <td>《追星星的少女》</td>
+                                <td class="role">冬雨</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
         
         <!-- 主要内容区 -->
         <div class="main-content">
             <!-- 左侧内容 -->
             <div class="left-content">
-                <!-- 关于檀健次 -->
-                <section id="about" class="card">
-                    <h2><i class="fas fa-user"></i> 关于檀健次</h2>
-                    <p>檀健次，中国内地男演员、歌手，MIC男团成员。出生于1990年10月5日，广西北海人。他以其出色的演技和独特的个人魅力赢得了众多粉丝的喜爱。</p>
-                    <p>代表作品包括电视剧《猎罪图鉴》、《长相思》、《你安全吗？》，电影《秘岸》、《被我弄丢的你》等。他在舞台上的表现力和对角色的深刻理解使他成为当代备受瞩目的青年演员之一。</p>
-                </section>
-                
-                <!-- 影视作品 -->
-                <section id="works" class="card">
-                    <h2><i class="fas fa-film"></i> 影视作品</h2>
-                    
-                    <div class="works-tabs">
-                        <button class="tab-btn active" data-tab="tv">电视剧</button>
-                        <button class="tab-btn" data-tab="movie">电影</button>
-                        <button class="tab-btn" data-tab="variety">综艺</button>
-                    </div>
-                    
-                    <div class="tab-content active" id="tv-tab">
-                        <div class="works-grid">
-                            <div class="work-card">
-                                <div class="work-img">猎罪图鉴</div>
-                                <div class="work-info">
-                                    <div class="work-title">猎罪图鉴 (2022)</div>
-                                    <div class="work-desc">饰演天才画像师沈翊，与刑警队长杜城联手破案，展现精湛演技[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">长相思</div>
-                                <div class="work-info">
-                                    <div class="work-title">长相思 (2023)</div>
-                                    <div class="work-desc">饰演相柳/防风邶，深情演绎九头蛇妖，角色深入人心[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">你安全吗？</div>
-                                <div class="work-info">
-                                    <div class="work-title">你安全吗？ (2022)</div>
-                                    <div class="work-desc">饰演秦淮，网络安全公司老板，展现科技与悬疑的完美结合[citation:3]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">滤镜</div>
-                                <div class="work-info">
-                                    <div class="work-title">滤镜 (2025)</div>
-                                    <div class="work-desc">饰演唐奇，与李兰迪搭档，展现奇幻爱情故事[citation:9]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">很想很想你</div>
-                                <div class="work-info">
-                                    <div class="work-title">很想很想你 (2023)</div>
-                                    <div class="work-desc">饰演莫青成，配音大神与医学生的甜蜜爱情故事[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">四方馆</div>
-                                <div class="work-info">
-                                    <div class="work-title">四方馆 (待播)</div>
-                                    <div class="work-desc">新剧期待中，檀健次将展现全新角色形象[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">今夕何夕</div>
-                                <div class="work-info">
-                                    <div class="work-title">今夕何夕 (2020)</div>
-                                    <div class="work-desc">饰演三皇子庞钰，深情演绎权谋与爱情[citation:5]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">三国机密</div>
-                                <div class="work-info">
-                                    <div class="work-title">三国机密之潜龙在渊 (2018)</div>
-                                    <div class="work-desc">饰演曹丕，展现三国时期权谋与野心[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">军师联盟</div>
-                                <div class="work-info">
-                                    <div class="work-title">大军师司马懿之军师联盟 (2017)</div>
-                                    <div class="work-desc">饰演司马昭，展现历史人物风采[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">虎啸龙吟</div>
-                                <div class="work-info">
-                                    <div class="work-title">虎啸龙吟 (2017)</div>
-                                    <div class="work-desc">饰演司马昭，延续军师联盟的故事[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">原来你还在这里</div>
-                                <div class="work-info">
-                                    <div class="work-title">原来你还在这里 (2018)</div>
-                                    <div class="work-desc">饰演周子翼，演绎青春爱情故事[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">带着爸爸去留学</div>
-                                <div class="work-info">
-                                    <div class="work-title">带着爸爸去留学 (2019)</div>
-                                    <div class="work-desc">饰演陈凯文，展现留学生活与成长[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">爱的厘米</div>
-                                <div class="work-info">
-                                    <div class="work-title">爱的厘米 (2020)</div>
-                                    <div class="work-desc">饰演关震雷，展现家庭情感故事[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">鬓边不是海棠红</div>
-                                <div class="work-info">
-                                    <div class="work-title">鬓边不是海棠红 (2020)</div>
-                                    <div class="work-desc">饰演陈纫香，民国时期名角[citation:2]。</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-content" id="movie-tab">
-                        <div class="works-grid">
-                            <div class="work-card">
-                                <div class="work-img">被我弄丢的你</div>
-                                <div class="work-info">
-                                    <div class="work-title">被我弄丢的你 (2024)</div>
-                                    <div class="work-desc">饰演白晓宇，改编自郑执小说，关于爱情与成长的故事[citation:6]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">震耳欲聋</div>
-                                <div class="work-info">
-                                    <div class="work-title">震耳欲聋 (待上映)</div>
-                                    <div class="work-desc">饰演李淇，聋人反诈题材电影[citation:6]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">三国的星空第一部</div>
-                                <div class="work-info">
-                                    <div class="work-title">三国的星空第一部 (待上映)</div>
-                                    <div class="work-desc">为曹操配音，动画历史电影[citation:6]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">宠爱</div>
-                                <div class="work-info">
-                                    <div class="work-title">宠爱 (2019)</div>
-                                    <div class="work-desc">饰演罗华，暗恋邻居的电视台工作人员[citation:6]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">秘岸</div>
-                                <div class="work-info">
-                                    <div class="work-title">秘岸 (2009)</div>
-                                    <div class="work-desc">电影处女作，饰演小川，展现青涩演技[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">天师伏魔·弑魂</div>
-                                <div class="work-info">
-                                    <div class="work-title">天师伏魔·弑魂 (2016)</div>
-                                    <div class="work-desc">饰演高级天师高远，展现玄幻魅力[citation:2]。</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-content" id="variety-tab">
-                        <div class="works-grid">
-                            <div class="work-card">
-                                <div class="work-img">追光吧！哥哥</div>
-                                <div class="work-info">
-                                    <div class="work-title">追光吧！哥哥 (2020-2021)</div>
-                                    <div class="work-desc">展现出色唱跳实力，最终获得"追光之星"称号[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">我就是演员</div>
-                                <div class="work-info">
-                                    <div class="work-title">我就是演员 (2018)</div>
-                                    <div class="work-desc">凭借《军师联盟》片段获得导师一致好评，演技获认可[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">跨界歌王</div>
-                                <div class="work-info">
-                                    <div class="work-title">跨界歌王第五季 (2020)</div>
-                                    <div class="work-desc">以挑战嘉宾身份参加，展现音乐才华[citation:2]。</div>
-                                </div>
-                            </div>
-                            <div class="work-card">
-                                <div class="work-img">天赐的声音</div>
-                                <div class="work-info">
-                                    <div class="work-title">天赐的声音 (2020)</div>
-                                    <div class="work-desc">参加音乐节目，展现多样音乐风格[citation:2]。</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
                 <!-- 音乐作品 -->
                 <section id="music" class="card">
                     <h2><i class="fas fa-music"></i> 音乐作品</h2>
@@ -794,55 +1034,7 @@
                             </div>
                             <div class="music-info">
                                 <div class="music-title">如果你也在想我</div>
-                                <div class="music-year">电视剧《今夕何夕》插曲 (2020)[citation:5]</div>
-                            </div>
-                            <button class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                        <div class="music-card">
-                            <div class="music-icon">
-                                <i class="fas fa-headphones"></i>
-                            </div>
-                            <div class="music-info">
-                                <div class="music-title">Fly Away</div>
-                                <div class="music-year">首支个人单曲 (2014)[citation:2]</div>
-                            </div>
-                            <button class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                        <div class="music-card">
-                            <div class="music-icon">
-                                <i class="fas fa-headphones"></i>
-                            </div>
-                            <div class="music-info">
-                                <div class="music-title">MIC男团 - 《Rock Star》</div>
-                                <div class="music-year">专辑 (2010)[citation:2]</div>
-                            </div>
-                            <button class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                        <div class="music-card">
-                            <div class="music-icon">
-                                <i class="fas fa-headphones"></i>
-                            </div>
-                            <div class="music-info">
-                                <div class="music-title">MIC男团 - 《色·COLOR》</div>
-                                <div class="music-year">专辑 (2012)[citation:2]</div>
-                            </div>
-                            <button class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                        <div class="music-card">
-                            <div class="music-icon">
-                                <i class="fas fa-headphones"></i>
-                            </div>
-                            <div class="music-info">
-                                <div class="music-title">MIC男团 - 《V》</div>
-                                <div class="music-year">专辑 (2011)[citation:2]</div>
+                                <div class="music-year">电视剧《今夕何夕》插曲 (2020)</div>
                             </div>
                             <button class="play-btn">
                                 <i class="fas fa-play"></i>
@@ -854,19 +1046,7 @@
                             </div>
                             <div class="music-info">
                                 <div class="music-title">等不到的等待</div>
-                                <div class="music-year">《长相思》相柳主题曲 (2023)[citation:2]</div>
-                            </div>
-                            <button class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                        <div class="music-card">
-                            <div class="music-icon">
-                                <i class="fas fa-headphones"></i>
-                            </div>
-                            <div class="music-info">
-                                <div class="music-title">蒙娜丽莎</div>
-                                <div class="music-year">个人单曲[citation:2]</div>
+                                <div class="music-year">《长相思》相柳主题曲 (2023)</div>
                             </div>
                             <button class="play-btn">
                                 <i class="fas fa-play"></i>
@@ -878,39 +1058,8 @@
             
             <!-- 右侧内容 -->
             <div class="right-content">
-                <!-- 活动行程 -->
-                <section id="events" class="card">
-                    <h2><i class="fas fa-calendar-alt"></i> 近期活动</h2>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-date">2024年3月8日</div>
-                            <div class="timeline-content">电影《被我弄丢的你》上映[citation:6]</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2024年</div>
-                            <div class="timeline-content">电视剧《滤镜》热播[citation:9]</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2025年</div>
-                            <div class="timeline-content">电影《震耳欲聋》预计上映[citation:6]</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2025年</div>
-                            <div class="timeline-content">动画电影《三国的星空第一部》预计上映[citation:6]</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">待定</div>
-                            <div class="timeline-content">电视剧《四方馆》待播[citation:2]</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">待定</div>
-                            <div class="timeline-content">《猎罪图鉴2》等待开拍[citation:4]</div>
-                        </div>
-                    </div>
-                </section>
-                
                 <!-- 应援活动 -->
-                <section id="support" class="card">
+                <section class="card">
                     <h2><i class="fas fa-heart"></i> 应援活动</h2>
                     <p>加入小炭火，一起为檀健次加油！</p>
                     <ul style="margin-left: 20px; margin-top: 10px;">
@@ -927,15 +1076,47 @@
                 <section class="card">
                     <h2><i class="fas fa-trophy"></i> 荣誉奖项</h2>
                     <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>2025 QQ音乐巅峰全能艺人[citation:2]</li>
-                        <li>2006 桃李杯全国拉丁舞大赛少年组冠军[citation:2]</li>
-                        <li>2006 全国体育舞蹈锦标赛拉丁舞冠军[citation:2]</li>
-                        <li>金钟奖中国音超组合金奖[citation:2]</li>
-                        <li>香港流行音乐节亚洲新星奖[citation:2]</li>
+                        <li>2025 QQ音乐巅峰全能艺人</li>
+                        <li>2006 桃李杯全国拉丁舞大赛少年组冠军</li>
+                        <li>2006 全国体育舞蹈锦标赛拉丁舞冠军</li>
+                        <li>金钟奖中国音超组合金奖</li>
+                        <li>香港流行音乐节亚洲新星奖</li>
                     </ul>
                 </section>
             </div>
         </div>
+        
+        <!-- 图片展示区 -->
+        <section id="gallery" class="card gallery-section">
+            <h2><i class="fas fa-images"></i> 图片展示</h2>
+            <p>欣赏檀健次的精彩瞬间</p>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <div class="work-img">猎罪图鉴剧照</div>
+                    <div class="gallery-caption">《猎罪图鉴》中饰演沈翊</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="work-img">长相思剧照</div>
+                    <div class="gallery-caption">《长相思》中饰演相柳/防风邶</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="work-img">舞台表演</div>
+                    <div class="gallery-caption">舞台上的精彩表演</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="work-img">写真照片</div>
+                    <div class="gallery-caption">时尚写真</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="work-img">粉丝见面会</div>
+                    <div class="gallery-caption">与粉丝互动</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="work-img">综艺节目</div>
+                    <div class="gallery-caption">综艺节目中的精彩表现</div>
+                </div>
+            </div>
+        </section>
         
         <!-- 留言祝福 -->
         <section id="contact" class="card">
